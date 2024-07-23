@@ -31,18 +31,20 @@ export default function UserCard() {
         <figure>
           <img
             className="mx-auto"
-            src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${user?.login}&layout=compact&bg_color=030712&border_color=E5E7EB&title_color=E5E7EB&text_color=9CA3AF&locale=pt-br`}
+            src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${user?.login}&layout=compact&bg_color=030712&border_color=E5E7EB&title_color=E5E7EB&text_color=9CA3AF&locale=pt-br&disable_animations`}
             alt="Top programming languagens of the user"
           />
         </figure>
 
         <UserFollowingAndFollowers following={user?.following} followers={user?.followers} />
 
-        <section className="flex gap-2 text-sm text-gray-600 font-medium justify-start items-center mt-2">
-          <span className="flex items-center gap-1">
-            <FaLocationDot /> {user?.location}
-          </span>
-        </section>
+        {user?.location && (
+          <section className="flex gap-2 text-sm text-gray-600 font-medium justify-start items-center mt-2">
+            <span className="flex items-center gap-1">
+              <FaLocationDot /> {user?.location}
+            </span>
+          </section>
+        )}
       </section>
     )
   );
