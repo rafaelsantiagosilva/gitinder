@@ -6,10 +6,14 @@ export default function Header() {
         <h1 className="text-2xl font-medium">Gitinder</h1>
       </a>
       <nav className="flex gap-6">
-        <a className="text-gray-300 hover:text-gray-200 hover:underline" href="#">
+        <a
+          className="text-gray-300 hover:text-gray-200 hover:underline"
+          href="https://docs.github.com/pt/rest?apiVersion=2022-11-28"
+          target="blank"
+        >
           Github API
         </a>
-        <a className="text-gray-300 hover:text-gray-200 hover:underline" href="#">
+        <a className="text-gray-300 hover:text-gray-200 hover:underline" href="https://pt.vitejs.dev/" target="blank">
           Vite
         </a>
         <a className="text-gray-300 hover:text-gray-200 hover:underline" href="#">
