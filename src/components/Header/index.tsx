@@ -3,7 +3,7 @@ export default function Header() {
     <header className="flex justify-between items-center bg-gray-950 text-gray-200 py-4 px-6 shadow-lg">
       <a className="flex items-center" href="#">
         <img className="size-11" src="/favicon.ico" alt="Octocat in a white flame (Tinder logo)" />
-        <h1 className="text-2xl font-medium">Gitinder</h1>
+        <h1 className="text-2xl font-medium">GiTinder</h1>
       </a>
       <nav className="flex gap-6">
         <a
