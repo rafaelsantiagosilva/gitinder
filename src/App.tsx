@@ -6,7 +6,7 @@ export default function App() {
     <>
       <Header />
       <main>
-        <UserCard />
+        <UserCard animate={false} />
       </main>
       <footer className="text-center text-md text-gray-200 mt-6">&copy;Rafael Santiago</footer>
     </>
