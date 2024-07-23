@@ -2,7 +2,7 @@ import axios from 'axios';
 import GithubUser from '../interfaces/GithubUser';
 
 export default async function fetchUser(): Promise<GithubUser | undefined> {
-  const USER_QUANTITY = 10;
+  const USER_QUANTITY = 100;
   const API_URL = `https://api.github.com/users?per_page=${USER_QUANTITY}`;
 
   try {
