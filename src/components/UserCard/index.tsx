@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
 import fetchUser from '../../api/fetchUser';
 import GithubUser from '../../interfaces/GithubUser';
 import UserCardHeader from './UserCardHeader';
@@ -19,7 +20,12 @@ export default function UserCard() {
 
   return (
     user && (
-      <section className="bg-gray-950 text-gray-200 mx-auto mt-12 w-96 rounded-md shadow-md p-6 transition-transform hover:scale-105">
+      <motion.div
+        className="box bg-gray-950 text-gray-200 mx-auto mt-12 w-96 rounded-md shadow-md p-6 transition-transform hover:scale-105"
+        initial={{ x: 0, y: 0, rotate: 0 }}
+        animate={{ x: 100, y: 100, rotate: 45 }}
+        transition={{ duration: 2 }}
+      >
         <UserCardHeader html_url={user?.html_url} name={user?.name} avatar_url={user?.avatar_url} email={user?.email} />
 
         <article className="text-sm text-center text-gray-400 my-2 line-clamp-3">
@@ -43,7 +49,7 @@ export default function UserCard() {
             </span>
           </section>
         )}
-      </section>
+      </motion.div>
     )
   );
 }
