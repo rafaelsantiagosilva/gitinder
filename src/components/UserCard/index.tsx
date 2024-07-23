@@ -17,8 +17,6 @@ export default function UserCard() {
     getUserFromApi();
   }, []);
 
-  console.info(user);
-
   return (
     user && (
       <section className="bg-gray-950 text-gray-200 mx-auto mt-12 w-96 rounded-md shadow-md p-6 transition-transform hover:scale-105">
