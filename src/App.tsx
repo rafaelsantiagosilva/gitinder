@@ -1,5 +1,5 @@
-import Header from './components/Header';
-import UserCard from './components/UserCard';
+import Header from './components/Header/index';
+import UserCard from './components/UserCard/index';
 
 export default function App() {
   return (
@@ -8,7 +8,7 @@ export default function App() {
       <main>
         <UserCard />
       </main>
-      <footer className='text-center text-md text-gray-200 mt-6'>&copy;Rafael Santiago</footer>
+      <footer className="text-center text-md text-gray-200 mt-6">&copy;Rafael Santiago</footer>
     </>
   );
 }
