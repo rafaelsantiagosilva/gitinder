@@ -1,17 +1,19 @@
-import { useState, useEffect } from 'react';
-import { MdErrorOutline } from 'react-icons/md';
-import { FaLocationDot } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { FaLocationDot } from 'react-icons/fa6';
+import { MdErrorOutline } from 'react-icons/md';
 import fetchUser from '../../api/fetchUser';
+import AnimationToSide from '../../interfaces/AnimationToSide';
 import GithubUser from '../../interfaces/GithubUser';
 import UserCardHeader from './UserCardHeader';
 import UserFollowingAndFollowers from './UserFollowingAndFollowers';
 
 interface UserCardProps {
-  animate: boolean;
+  isAnimate: boolean;
+  animation: AnimationToSide | undefined;
 }
 
-export default function UserCard({ animate }: UserCardProps) {
+export default function UserCard({ isAnimate, animation }: UserCardProps) {
   const [user, setUser] = useState<GithubUser | undefined>();
 
   const getUserFromApi = async () => {
@@ -39,7 +41,7 @@ export default function UserCard({ animate }: UserCardProps) {
     <motion.div
       className="box bg-gray-950 text-gray-200 mx-auto mt-12 w-96 rounded-md shadow-md p-6 transition-transform hover:scale-105"
       initial={{ x: 0, y: 0, rotate: 0 }}
-      animate={animate ? { x: -300, y: 140, rotate: -20 } : { x: 0, y: 0, rotate: 0 }}
+      animate={isAnimate ? animation : { x: 0, y: 0, rotate: 0 }}
       transition={{ duration: 0.5 }}
     >
       <UserCardHeader html_url={user?.html_url} name={user?.name} avatar_url={user?.avatar_url} email={user?.email} />
