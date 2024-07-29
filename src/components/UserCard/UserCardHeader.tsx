@@ -12,7 +12,7 @@ export default function UserCardHeader({ html_url, name, avatar_url, email }: Us
         <h2 className="font-bold text-xl">{name}</h2>
       </a>
       <p className="text-sm text-gray-400">{email}</p>
-      <img className="w-36 h-36 rounded-full" src={avatar_url ?? ''} alt="" />
+      <img className="w-36 h-36 rounded-full" src={avatar_url ?? ''} fetchPriority="high" />
     </header>
   );
 }
