@@ -1,9 +1,9 @@
-interface UserBioAndTopLangs {
+interface UserBioAndTopLangsProps {
   bio: string | null;
   login: string;
 }
 
-export default function UserBioAndTopLangs({ bio, login }: UserBioAndTopLangs) {
+export default function UserBioAndTopLangs({ bio, login }: UserBioAndTopLangsProps) {
   return (
     <>
       <article className="text-sm text-center text-gray-400 my-2 line-clamp-3">
