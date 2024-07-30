@@ -1,10 +1,17 @@
+import { useState } from 'react';
 import Header from './components/Header/index';
 import UserCard from './components/UserCard/index';
+import Sidebar from './components/Sidebar';
 
 export default function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header setIsSidebarOpen={setIsSidebarOpen} />
+
+      <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+
       <main className="flex items-center justify-center gap-2">
         <UserCard />
       </main>

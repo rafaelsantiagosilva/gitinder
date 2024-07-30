@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .loading {
-     animation: loading_animation 1s infinite linear;
+  animation: loading_animation 1s infinite linear;
 }
 
 @keyframes loading_animation {
