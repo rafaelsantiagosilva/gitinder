@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react';
 import fetchUser from '../../api/fetchUser';
 import AnimationToSide from '../../interfaces/AnimationToSide';
 import GithubUser from '../../interfaces/GithubUser';
-import AnimationButton from './AnimationButton';
-import UserBioAndTopLangs from './UserBioAndTopLangs';
-import UserCardHeader from './UserCardHeader';
-import UserFollowingAndFollowers from './UserFollowingAndFollowers';
-import UserLocation from './UserLocation';
+import AnimationButton from './components/AnimationButton';
+import UserBioAndTopLangs from './components/UserBioAndTopLangs';
+import UserCardHeader from './components/UserCardHeader';
+import UserFollowingAndFollowers from './components/UserFollowingAndFollowers';
+import UserLocation from './components/UserLocation';
 
 export default function UserCard() {
   const [user, setUser] = useState<GithubUser | undefined>();
