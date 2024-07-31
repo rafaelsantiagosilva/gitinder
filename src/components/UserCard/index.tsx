@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
+import { useContext, useEffect, useState } from 'react';
 import { BiSolidMessageError } from 'react-icons/bi';
 import { ImSpinner9 } from 'react-icons/im';
-import { useEffect, useState } from 'react';
 
 import fetchUser from '../../api/fetchUser';
+import FavoritedUsersContext from '../../context/FavoritedUsersContext';
 import AnimationToSide from '../../interfaces/AnimationToSide';
 import GithubUser from '../../interfaces/GithubUser';
 import AnimationButton from './components/AnimationButton';
@@ -11,7 +12,6 @@ import UserBioAndTopLangs from './components/UserBioAndTopLangs';
 import UserCardHeader from './components/UserCardHeader';
 import UserFollowingAndFollowers from './components/UserFollowingAndFollowers';
 import UserLocation from './components/UserLocation';
-import FavoritedUsersProvider from '../../context/FavoritedUsersProvider';
 
 export default function UserCard() {
   const [user, setUser] = useState<GithubUser | undefined>();
@@ -20,6 +20,8 @@ export default function UserCard() {
   const [animation, setAnimation] = useState<AnimationToSide | undefined>();
   const [isAnimation, setIsAnimation] = useState(false);
   const ANIMATION_DURATION = 500; // ms
+
+  const { favoritedUsers, setFavoritedUsers } = useContext(FavoritedUsersContext);
 
   const getUserFromApi = async () => {
     setUser(undefined);
@@ -95,7 +97,6 @@ export default function UserCard() {
 
         <UserLocation location={user?.location} />
 
-        <FavoritedUsersProvider>
           <div className="flex items-center justify-around pt-4">
             <AnimationButton
               animationSide="left"
@@ -110,13 +111,13 @@ export default function UserCard() {
               animationSide="right"
               setAnimation={async () => {
                 setAnimationRight();
+                setFavoritedUsers(favoritedUsers ? [...favoritedUsers, user] : [user]);
                 setTimeout(() => {
                   getUserFromApi();
                 }, ANIMATION_DURATION);
               }}
             />
           </div>
-        </FavoritedUsersProvider>
       </motion.div>
     </>
   ) : isLoading ? (

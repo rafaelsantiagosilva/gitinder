@@ -1,4 +1,8 @@
+import { useContext } from 'react';
 import { RiCloseLargeFill } from 'react-icons/ri';
+
+import FavoritedUsersContext from '../../context/FavoritedUsersContext';
+import FavoritedUser from './components/FavoritedUser';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -6,6 +10,8 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
+  const { favoritedUsers } = useContext(FavoritedUsersContext);
+
   return (
     <menu
       className={`bg-gray-800 shadow-sm p-6 w-full max-w-96 h-svh fixed top-0 right-0 transition-all ${!isSidebarOpen && 'translate-x-[110%]'}`}
@@ -16,6 +22,12 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProp
           <RiCloseLargeFill className="text-2xl flex-1" />
         </button>
       </header>
+
+      <div className='flex flex-col-reverse gap-4'>
+        {favoritedUsers?.map((favoritedUser) => {
+          return <FavoritedUser user={favoritedUser} />;
+        })}
+      </div>
     </menu>
   );
 }
