@@ -11,6 +11,7 @@ import UserBioAndTopLangs from './components/UserBioAndTopLangs';
 import UserCardHeader from './components/UserCardHeader';
 import UserFollowingAndFollowers from './components/UserFollowingAndFollowers';
 import UserLocation from './components/UserLocation';
+import FavoritedUsersProvider from '../../context/FavoritedUsersProvider';
 
 export default function UserCard() {
   const [user, setUser] = useState<GithubUser | undefined>();
@@ -80,7 +81,13 @@ export default function UserCard() {
         animate={isAnimation ? animation : { x: 0, y: 0, rotate: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <UserCardHeader html_url={user?.html_url} name={user?.name} avatar_url={user?.avatar_url} email={user?.email} />
+        <UserCardHeader
+          login={user.login}
+          html_url={user?.html_url}
+          name={user?.name}
+          avatar_url={user?.avatar_url}
+          email={user?.email}
+        />
 
         <UserBioAndTopLangs bio={user?.bio} login={user?.login} />
 
@@ -88,29 +95,28 @@ export default function UserCard() {
 
         <UserLocation location={user?.location} />
 
-        <div className="flex items-center justify-around pt-4">
-          <AnimationButton
-            animationSide="left"
-            setAnimation={() => {
-              setAnimationLeft();
-
-              setTimeout(() => {
-                getUserFromApi();
-              }, ANIMATION_DURATION);
-            }}
-          />
-
-          <AnimationButton
-            animationSide="right"
-            setAnimation={async () => {
-              setAnimationRight();
-
-              setTimeout(() => {
-                getUserFromApi();
-              }, ANIMATION_DURATION);
-            }}
-          />
-        </div>
+        <FavoritedUsersProvider>
+          <div className="flex items-center justify-around pt-4">
+            <AnimationButton
+              animationSide="left"
+              setAnimation={() => {
+                setAnimationLeft();
+                setTimeout(() => {
+                  getUserFromApi();
+                }, ANIMATION_DURATION);
+              }}
+            />
+            <AnimationButton
+              animationSide="right"
+              setAnimation={async () => {
+                setAnimationRight();
+                setTimeout(() => {
+                  getUserFromApi();
+                }, ANIMATION_DURATION);
+              }}
+            />
+          </div>
+        </FavoritedUsersProvider>
       </motion.div>
     </>
   ) : isLoading ? (
