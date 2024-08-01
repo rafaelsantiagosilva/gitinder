@@ -81,7 +81,7 @@ export default function UserCard() {
         className="box bg-gray-950 text-gray-200 mx-auto mt-12 w-96 rounded-md shadow-md p-6 transition-transform hover:scale-105"
         initial={{ x: 0, y: 0, rotate: 0 }}
         animate={isAnimation ? animation : { x: 0, y: 0, rotate: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.05 }}
       >
         <UserCardHeader
           login={user.login}
